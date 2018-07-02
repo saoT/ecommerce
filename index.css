@@ -1,0 +1,316 @@
+/* ----------------------------------- /
+/ ---------- Global corps ---------- /
+/ ----------------------------------- */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  margin: auto;
+  height: 100%;
+}
+
+/* ----------------------------------- /
+/ ---------- Footer ---------- /
+/ ----------------------------------- */
+.footix{
+  width: 100%;
+  background-color: lightgrey;
+  position: absolute;
+  margin-top: 10%;
+}
+
+#footix1 {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin: auto;
+  list-style: none;
+}
+
+
+/* ----------------------------------- /
+/ ------------- NavBar------------- /
+/ ----------------------------------- */
+
+.navbar-light{
+  background-color: lightgrey;
+}
+
+/* ----------------------------------- /
+/ ------------- Carousel ------------- /
+/ ----------------------------------- */
+
+
+.carousel{
+  position: relative;
+  background-color: blue;
+  border: 5px solid red;
+  margin: auto;
+  width: 50%;
+  height: 500px;
+  margin-top:2%;
+}
+
+
+
+/* ----------------------------------- /
+/ ------------- Img Head------------- /
+/ ----------------------------------- */
+
+.rowfir{
+  position: relative;
+  height: 20%;
+}
+
+.rowp{
+  height: 30%;
+  background-image: url('/commerce/E/images/bande_son.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.rowA {
+  background-color: black;
+  padding: 6% 0 0 0;
+  height: 100%;
+}
+
+.wrapper {
+  position: absolute;
+  top:20%;
+  left:0;
+  width: 100%;
+  height: 100%;
+}
+
+.bs {
+  background: #fff;
+  float: left;
+  height: 1px;
+  margin: 0 1px 0 0;
+  left:25%;
+  position: relative;
+  transition: all linear 500ms;
+  width: 1px;
+  -webkit-box-reflect: below -1px; -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.35, transparent), to(black));
+}
+.bande{
+  width: 70%;
+  margin: auto;
+}
+
+
+#titrentete{
+  position: absolute;
+  color: yellow;
+  font-size:50px;
+  z-index: 1;
+}
+
+/* ----------------------------------- /
+/ --------------  Sign In  ----------- /
+/ ----------------------------------- */
+
+.indeximage{
+  position: relative;
+  background-image: url('images/ecoute.jpg');
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  background-size: 100% 100%;
+}
+
+/*-------Connexion form--------*/
+.Connexion{
+  height: 40%;
+  width: 30%;
+  /*border: solid 2px red;*/
+  text-align: center;
+  position: absolute;
+  margin-left: 60%;
+  margin-top: 5%;
+}
+/* ----------------------------------- /
+/ -------------  Sign Up  ------------- /
+/ ----------------------------------- */
+
+.inscrimage{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background-image: url('./images/notes.jpg');
+  background-repeat: no-repeat; 
+  background-size: 100% 100%;
+}
+.formulaire{
+  text-align: center;
+}
+
+.Texte_accueil{
+  text-align: center;
+}
+
+.blok{
+  display: inline-block; 
+  height: 100%;
+}
+
+#inscribot{
+  margin: auto;
+}
+
+#btn-inscr{
+  width: 30%;
+}
+ #infoper{
+  border: 2px solid blue;
+}
+
+#infociv{
+  border: 2px solid orange;
+  }
+
+  /* Form Input */
+  input {
+    width: 70%;
+    padding: 0% 10%;
+    border: 1px solid black;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  /* Form position */
+  .inscription {
+    background-color: #f0dc86;
+    opacity: 0.7;
+    text-align: center;
+    position: absolute;
+    margin-left: 55%;
+    margin-top:5%; 
+    width: 35%
+  }
+
+  .butinscri {
+    padding: 2% 7%;
+    margin: 8% 0;
+    border: none;
+    cursor: pointer;
+    width: 55%;
+    opacity: 0.9;
+  }
+#but1{
+  border: 5px solid black;
+}
+
+  /* Hover on buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 300px) {
+    span.psw {
+      display: block;
+      float: none;
+    }
+
+  }
+
+
+
+@media screen and (max-width:640px){
+  .bs:nth-child( n+80 ) {
+    display:none !important;
+  }
+}
+
+@media screen and (max-width:450px){
+  .bs:nth-child( n+40 ) {
+    display:none !important;
+  }
+}
+/* ----------------------------------- /
+/ ----------- Profil ---------------- /
+/ ----------------------------------- */
+
+.profrow{
+  flex: 1;
+  flex-direction: row;
+  border: 2px solid blue;
+  display:flex;
+}
+
+.colprof{
+  flex-direction: column;
+  flex: 1;
+  border: 2px solid red;
+}
+
+.prof1 button{
+  color: white;
+  cursor: pointer;
+}
+
+.butdelete{
+  background-color: brown;
+}
+.butdelete:hover{
+  background-color: red !important;
+}
+.butdelete:focus{
+  border-color: transparent; 
+}
+.butest{
+  display: flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.modifprof{
+  border: 2px solid grey;
+  width: 70%;
+  margin: auto;
+}
+
+/* ----------------------------------- /
+/ ----------- Sign up ---------------- /
+/ ----------------------------------- */
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 2% 7%;
+  background-color: #C66D63;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 3%;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
