@@ -1,6 +1,5 @@
 <?php 
 session_start();
-require_once("../includes/bande_son.php");
 include_once('../includes/includes.php');
 
 
@@ -38,6 +37,16 @@ if(!empty($_POST))
   <title>Modifprofil</title>
 </head>
 <body>
+
+  <?php 
+    require_once ('../includes/bande_son.php');
+  ?>
+
+  <div class="wrapper">
+    <?php
+      require_once("../includes/navbar.php");
+    ?>
+
   <div class="inscrimage">
     <div class="inscription">
       <?php 
