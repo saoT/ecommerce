@@ -2,7 +2,6 @@
 session_start();
 $titre="Connexion";
 $titre="Enregistrement";
-require_once("./includes/bande_son.php");
 include("./includes/connexionDB.php");
 include_once('./includes/includes.php');
 
@@ -55,7 +54,7 @@ if(!empty($_POST))
     $_SESSION['mail'] = $req['mail_client'];
     $_SESSION['password'] = $req['password'];  
     $_SESSION['flash']['info'] = "Bonjour " . $_SESSION['prenom'];
-    header('Location: pages/page_acceuil.php');
+    header('Location: ./pages/page_acceuil.php');
     exit;
   }
   
@@ -71,6 +70,9 @@ if(!empty($_POST))
   <title>La Boite à musique</title>
 </head>
 <body>
+  <?php 
+  require_once("./includes/bande_son.php"); 
+  ?>
   <div class="Texte_accueil">
     <h2>Bienvenue sur La Boite à musique, le premier site numérique 100% analogique </h2>
   </div>
