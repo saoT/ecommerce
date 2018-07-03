@@ -44,6 +44,7 @@ foreach ($musics as $msc){
 					<h6>Description du produit : </h6><br>
 					<?php echo $msc['description_musique']  ?>
 				</div>
+				
 				<div id="prix">
 					<div id="prixvin">
 						<p>Prix du vinyl: <br><?php echo $msc['prix_vinyl']. "€" ?> <div class="ajoutpanier"><button type="button">Ajouter au panier</button></div></p>
