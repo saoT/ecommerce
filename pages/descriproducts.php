@@ -25,16 +25,37 @@ foreach ($musics as $msc){
 	<link rel="stylesheet" href="/commerce/E/index.css">
 </head>
 <body>
-	<?php 
-require_once ('../includes/bande_son.php');
-?>
-<div class="wrapper">
-<?php
-require_once("../includes/navbar.php");
- ?>
-	<?php echo $msc['nom_artiste'].' a fait l\'album '.$msc['nom_album']?><br><br>
-	Le prix est de : <?php echo $msc['prix_vinyl'] ?>
-</div>
+	
+	<?php require_once ('../includes/bande_son.php'); ?>
+	
+	<div class="wrapper">
+	
+	<?php require_once("../includes/navbar.php"); ?>
+	
+			<div class="album">
+				<div class="titrealbum">
+					<h4>Album : <?php echo $msc['nom_album']?></h4>
+					<h5>Interprète : <?php echo $msc['nom_artiste']?></h5>
+				</div>
+				<div class="pochette">
+					<img src="#" alt="Pochette de l'album">
+				</div>
+				<div id="productdescri">
+					<h6>Description du produit : </h6><br>
+					<?php echo $msc['description_musique']  ?>
+				</div>
+				<div id="prix">
+					<div id="prixvin">
+						<p>Prix du vinyl: <br><?php echo $msc['prix_vinyl']. "€" ?> <div class="ajoutpanier"><button type="button">Ajouter au panier</button></div></p>
+					</div>
+					<div id="prixcas">
+						<p>Prix de la cassette: <br><?php echo $msc['prix_cassette']. "€" ?><div class="ajoutpanier"><button type="button">Ajouter au panier</button></div></p>
+					</div>
+					</div>
+			</div>
+	<!-- <a href="./admin.php"><button type="button" name="Admin">Admin</button></a> -->
+	<?php  require_once("../includes/footer.php");?>
+	</div>
 </body>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
