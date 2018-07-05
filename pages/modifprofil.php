@@ -4,7 +4,7 @@ include_once('../includes/includes.php');
 
 
 
-if(isset($_SESSION['pseudo']))
+if(!isset($_SESSION['pseudo']))
 {
   header('Location: ../index.php');
   exit;
@@ -21,7 +21,6 @@ if(!empty($_POST))
   { 
   $DB->update('UPDATE client SET adresse_client ="'.$Adressen.'",cp_client ="'.$Cpn.'",ville_client="'.$Villen.'" WHERE id_client="'.$_SESSION["id"] .'"');
 
-    $_SESSION['flash']['success'] = "Votre modification a bien été prise en compte !";
     header('Location: ../pages/profil.php');
     exit;  
   } 
@@ -66,15 +65,15 @@ if(!empty($_POST))
               <div id="infociv" class="blok">
               <label>* Adresse :</label>
               <br>
-              <input class="input" type="text" name="Adressen" placeholder="Nouvelle adresse" value="<?php if (isset($Adressen)) echo $Adressen; ?>" maxlength="20" required="required">  
+              <input class="input" type="text" name="Adressen" placeholder="Nouvelle adresse" value="<?php if (isset($Adressen)) echo $Adressen; ?>" maxlength="20" required>  
               <br>                                  
               <label>* Ville :</label>
               <br>
-              <input class="input" type="text" name="Villen" placeholder="Nouvelle ville" value="<?php if (isset($Villen)) echo $Villen; ?>" maxlength="20" required="required">  
+              <input class="input" type="text" name="Villen" placeholder="Nouvelle ville" value="<?php if (isset($Villen)) echo $Villen; ?>" maxlength="20" required>  
               <br>
               <label>* Code Postal :</label>
               <br>
-              <input class="input" type="number" name="Cpn" placeholder="Nouveau CP" value="<?php if (isset($Cpn)) echo $Cpn; ?>" maxlength="5" required="required">  
+              <input class="input" type="number" name="Cpn" placeholder="Nouveau CP" value="<?php if (isset($Cpn)) echo $Cpn; ?>" maxlength="5" required>  
               <br>
               <br>
               </div>

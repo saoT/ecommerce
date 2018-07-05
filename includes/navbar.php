@@ -8,13 +8,10 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/commerce/E/pages/products.php"><img src="/commerce/E/icon/kara.svg" width="42" height="42" alt="Chanson par catégorie"></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><img src="/commerce/E/icon/dvd-disc.svg" width="42" height="42"></a>
-            </li>
         </ul>
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="#"><img src="/commerce/E/icon/cart.svg" width="42" height="42"></a>
+                <a class="nav-link" href="/commerce/E/pages/panier.php"><img src="/commerce/E/icon/cart.svg" width="42" height="42"></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/commerce/E/pages/profil.php"><img src="/commerce/E/icon/prof.svg" width="42" height="42"></a>

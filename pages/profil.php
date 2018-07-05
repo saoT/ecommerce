@@ -78,14 +78,6 @@ case "delete":
           						<span aria-hidden="true">&times;</span></button>
       						</div>
       						<div class="modal-body">
-      		<?php 
-      		if(isset($_SESSION['flash']))
-      		{ 
-			foreach($_SESSION['flash'] as $type => $message): 
-			endforeach;
-			unset($_SESSION['flash']);
-			}
-			?> 
       						<form method="post" action="profil.php">	
     							<div class="formulaire">
         						<p>Veuillez completer tout les champs.</p>

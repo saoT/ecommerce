@@ -1,13 +1,8 @@
-<?php 
+<?php
 session_start();
-require_once("../includes/bande_son.php");
+//include_once('../includes/bande_son.php');
 include_once('../includes/includes.php');
 
-if(isset($_SESSION['pseudo']))
-{
-  header('Location: ../index.php');
-  exit;
-}
 
 if(!empty($_POST))
 {
@@ -69,12 +64,11 @@ if(!empty($_POST))
   if($valid)
   { 
     $DB->insert('INSERT INTO client (nom_client, prenom_client, adresse_client, cp_client, ville_client, mail_client, tel_client, password) values (:nom_client, :prenom_client, :adresse_client, :cp_client, :ville_client, :mail_client, :tel_client, :password)', array('nom_client' => $Nom, 'prenom_client' => $Prenom, 'adresse_client' => $Adresse, 'cp_client' => $Cp, 'ville_client' => $Ville, 'mail_client' => $Mail, 'tel_client' => $Tel, 'password' => crypt($Password, '$2a$10$1qAz2wSx3eDc4rFv5tGb5t')));
-    
-    echo "Votre inscription a bien été prise en compte, connectez-vous !";
-    header('Refresh: 3;url= /commerce/E/index.php');
+
+    header('Location:../index.php');
     exit;  
   } 
-} 
+}
 ?>
 
 <!DOCTYPE html>
@@ -88,14 +82,6 @@ if(!empty($_POST))
 <body>
   <div class="inscrimage">
     <div class="inscription">
-      <?php 
-      if(isset($_SESSION['flash']))
-      { 
-        foreach($_SESSION['flash'] as $type => $message): 
-        endforeach;
-        unset($_SESSION['flash']);
-      }
-      ?> 
       <form method="post" action="inscription.php">
       <div class="formulaire">
         <h1 class="index-h1">Inscription</h1>

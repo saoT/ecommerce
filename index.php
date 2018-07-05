@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 $titre="Connexion";
 $titre="Enregistrement";
@@ -58,7 +58,7 @@ if(!empty($_POST))
     exit;
   }
   
-} 
+}
 ?>
 
 <!DOCTYPE html>

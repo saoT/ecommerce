@@ -14,20 +14,20 @@ if(!empty($_POST))
   extract($_POST);
   $valid = true;
   $artiste = htmlspecialchars(trim($artiste));
-  $catego = htmlspecialchars(ucfirst(trim($catego)));
-  $prix_vi = htmlspecialchars(ucfirst(trim($prix_vi)));
-  $prix_cass = htmlspecialchars(ucfirst(trim($prix_cass)));
-  $album = htmlspecialchars(ucfirst(trim($album)));
-  $descri = htmlspecialchars(ucfirst(trim($descri)));
-  $pochette = trim($pochette);
-  
+  $catego = htmlspecialchars(trim($catego));
+  $prix_vi = htmlspecialchars(trim($prix_vi));
+  $prix_cass = htmlspecialchars(trim($prix_cass));
+  $album = htmlspecialchars(trim($album));
+  $descri = htmlspecialchars(trim($descri));
+  $pochette = htmlspecialchars(trim($pochette));
+  $id = trim($id);
   
   $req = $DB->query('SELECT * from musique');
   $req = $req->fetchAll();
 
   if($valid)
 	{ 
-$DB->insert('INSERT INTO musique (nom_artiste, categorie_artiste, prix_vinyl, prix_cassette, nom_album, description_musique, pochette) values (:nom_artiste, :categorie_artiste, :prix_vinyl, :prix_cassette, :nom_album, :description_musique, :pochette)', array('nom_artiste' => $artiste, 'categorie_artiste' => $catego, 'prix_vinyl' => $prix_vi, 'prix_cassette' => $prix_cass, 'nom_album' => $album, 'description_musique' => $descri, 'pochette' => $pochette));
+$DB->insert('INSERT INTO musique (id_artiste, nom_artiste, categorie_artiste, prix_vinyl, prix_cassette, nom_album, description_musique, pochette) values (:id_artiste ,:nom_artiste, :categorie_artiste, :prix_vinyl, :prix_cassette, :nom_album, :description_musique, :pochette)', array('id_artiste' =>$id ,'nom_artiste' => $artiste, 'categorie_artiste' => $catego, 'prix_vinyl' => $prix_vi, 'prix_cassette' => $prix_cass, 'nom_album' => $album, 'description_musique' => $descri, 'pochette' => $pochette));
     } 
 } 
 ?>
@@ -51,31 +51,34 @@ $DB->insert('INSERT INTO musique (nom_artiste, categorie_artiste, prix_vinyl, pr
               <br>
               <label>* Catego :</label>
               <br>
-              <input class="input" type="text" name="categorie_artiste" placeholder="categorie artiste" value="<?php if (isset($catego)) echo $catego; ?>" maxlength="20" required>  
+              <input class="input" type="text" name="catego" placeholder="categorie artiste" value="<?php if (isset($catego)) echo $catego; ?>" maxlength="20" required>  
               <br>
               <label>* Artiste :</label>
               <br>
               <input class="input" type="text" name="artiste" placeholder="Nom de l'artiste" value="<?php if (isset($artiste)) echo $artiste; ?>" required>  
               <br>
-				
+				    <label>* Id de l'artiste :</label>
+              <br>
+              <input class="input" type="number" name="id" placeholder="Prix de la cassette" value="<?php if (isset($id)) echo $id; ?>" maxlength="5" required>  
+              <br>  
               <label>* Pochette :</label>
               <input class="input" type="file" name="pochette" placeholder="Mot de passe" value="<?php if (isset($pochette)) echo $pochette; ?>" required>
               <br>
               <label>* Album :</label>
               <br>
-              <input class="input" type="text" name="nom_album" placeholder="Nom de l'album" value="<?php if (isset($album)) echo $album; ?>" maxlength="20" required>  
+              <input class="input" type="text" name="album" placeholder="Nom de l'album" value="<?php if (isset($album)) echo $album; ?>" maxlength="20" required>  
               <br>
               <label>* Prix du vinyl :</label>
               <br>
-              <input class="input" type="number" name="prix_vinyl" placeholder="Prix du vinyl" value="<?php if (isset($prix_vi)) echo $prix_vi; ?>" maxlength="20" required>  
+              <input class="input" type="number" name="prix_vi" placeholder="Prix du vinyl" value="<?php if (isset($prix_vi)) echo $prix_vi; ?>" maxlength="20" required>  
               <br>                                  
               <label>* Prix de la casette :</label>
               <br>
-              <input class="input" type="number" name="prix_cassette" placeholder="Prix de la cassette" value="<?php if (isset($prix_cass)) echo $prix_cass; ?>" maxlength="5" required>  
+              <input class="input" type="number" name="prix_cass" placeholder="Prix de la cassette" value="<?php if (isset($prix_cass)) echo $prix_cass; ?>" maxlength="5" required>  
               <br>                   
               <label>* descri :</label>
               <br>
-              <input class="input" type="text" name="description_musique" placeholder="Description de la musique" value="<?php if (isset($description_musique)) echo $description_musique; ?>" required>  
+              <input class="input" type="text" name="descri" placeholder="Description de la musique" value="<?php if (isset($description_musique)) echo $description_musique; ?>" required>  
               <br>
           </div>
         
