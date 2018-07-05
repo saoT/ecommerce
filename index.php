@@ -101,6 +101,7 @@ if(!empty($_POST))
       </form> 
     </div>
     <p>Pas encore inscrit ? <a href="pages/inscription.php">Inscrivez-vous !</a></p>
+    <p>Vous préferez visiter <a href="pages/page_acceuil.php">le site</a></p>
   </div>
 </div>
 <?php

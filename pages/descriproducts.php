@@ -2,12 +2,12 @@
 session_start();
 require_once("../includes/includes.php");
 
-if (!isset($_SESSION['prenom']))
+/*if (!isset($_SESSION['prenom']))
 {
 	header('Location: ../index.php');
 	exit;
 }
-
+*/
 $idget = $_GET['id'];
 $musics = $DB-> query('SELECT * FROM musique WHERE id_musique='.$idget);
 $musics = $musics->fetchAll();
@@ -53,6 +53,7 @@ foreach ($musics as $msc){
 						<p>Prix de la cassette: <br><?php echo $msc['prix_cassette']. "€" ?><div class="ajoutpanier"><button type="button">Ajouter au panier</button></div></p>
 					</div>
 					</div>
+					
 			</div>
 	<!-- <a href="./admin.php"><button type="button" name="Admin">Admin</button></a> -->
 	<?php  require_once("../includes/footer.php");?>

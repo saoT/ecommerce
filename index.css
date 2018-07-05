@@ -20,7 +20,7 @@ html, body{
   width: 100%;
   background-color: lightgrey;
   position: absolute;
-  margin-top: 2%;
+  margin-top: 5%;
 }
 
 #footix1 {
@@ -416,6 +416,8 @@ hr {
   width: 100%;
   top: 5%;
   position: relative;
+  border: 2px solid red;
+  z-index: 2
 }
 
 #panier{

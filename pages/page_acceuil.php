@@ -2,11 +2,11 @@
 session_start();
 require_once("../includes/includes.php");
 
-if (!isset($_SESSION['prenom']))
+/*if (!isset($_SESSION['prenom']))
 {
 	header('Location: ../index.php');
 	exit;
-}
+}*/
 ?>
 
 <!DOCTYPE html>
