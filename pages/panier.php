@@ -13,8 +13,10 @@ if(!empty($_GET["action"]))
 	switch($_GET["action"])
 	{
 		case "remove":
-		if(!empty($_SESSION["cart_item"])) {
-			foreach($_SESSION["cart_item"] as $k => $v) {
+		if(!empty($_SESSION["cart_item"]))
+		{
+			foreach($_SESSION["cart_item"] as $k => $v)
+			{
 				if($_GET["id_musique"] == $k)
 					unset($_SESSION["cart_item"][$k]);				
 				if(empty($_SESSION["cart_item"]))
@@ -35,7 +37,7 @@ if(!empty($_GET["action"]))
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 	<link rel="stylesheet" href="../index.css">
-	<title>Modifprofil</title>
+	<title>Panier - La Boite a Musique</title>
 </head>
 <body>
 	<?php require_once ('../includes/bande_son.php'); ?>
@@ -58,7 +60,7 @@ if(!empty($_GET["action"]))
 								<th>Prix vinyl</th>
 								<th></th>
 							</tr>	
-							<?php		
+							<?php
 							foreach ($_SESSION["cart_item"] as $item){
 								?>
 								<tr>
@@ -66,13 +68,12 @@ if(!empty($_GET["action"]))
 									<td><?php echo $item["nom_artiste"]; ?></td>
 									<td><?php echo $item["quantity"]; ?></td>
 									<td><?php echo "$".$item["prix_vinyl"]; ?></td>
-									<td><a href="panier.php?id_musique=<?php echo $item["id_musique"]; ?>&action=remove" title="Supprimer">Retirer du caddie</a></td>
+									<td><a href="panier.php?action=remove&id_musique=<?php echo $item["id_musique"]; ?>" title="Supprimer">Retirer du caddie</a></td>
 								</tr>
 								<?php
 								$item_total += ($item["prix_vinyl"]*$item["quantity"]);
 							};
 							?>
-
 							<tr>
 								<td colspan="5" align=right><strong>Total:</strong> <?php echo "$".$item_total; ?></td>
 							</tr>
