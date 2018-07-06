@@ -17,7 +17,7 @@ if(!empty($_GET["action"]))
 		{
 			foreach($_SESSION["cart_item"] as $k => $v)
 			{
-				if($_GET["id_musique"] == $k)
+				if($_GET["code_article"] == $k)
 					unset($_SESSION["cart_item"][$k]);				
 				if(empty($_SESSION["cart_item"]))
 					unset($_SESSION["cart_item"]);
@@ -29,6 +29,7 @@ if(!empty($_GET["action"]))
 		break;	
 	}
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -46,9 +47,12 @@ if(!empty($_GET["action"]))
 		<?php require_once("../includes/navbar.php"); ?>
 		<div class="basketcontainer">
 			<div id="panier">
-				<div class="panierentete"><span>MON PANIER</span> <span id="vider"><a id="btnEmpty" href="panier.php?action=empty">Vider le panier</a></span></div>
+				<div class="panierentete"><span>MON PANIER</span> <span id="vider"><a href="panier.php?action=empty">Vider le panier</a></span></div>
+
+				<form action="valipani.php" method="POST">
 				<?php
-				if(isset($_SESSION["cart_item"])){
+				if(isset($_SESSION["cart_item"]))
+				{
 					$item_total = 0;
 					?>	
 					<table class="table table-dark">
@@ -58,7 +62,7 @@ if(!empty($_GET["action"]))
 								<th>Artiste</th>
 								<th>Quantité</th>
 								<th>Prix vinyl</th>
-								<th></th>
+								<th>E</th>
 							</tr>	
 							<?php
 							foreach ($_SESSION["cart_item"] as $item){
@@ -68,7 +72,7 @@ if(!empty($_GET["action"]))
 									<td><?php echo $item["nom_artiste"]; ?></td>
 									<td><?php echo $item["quantity"]; ?></td>
 									<td><?php echo "$".$item["prix_vinyl"]; ?></td>
-									<td><a href="panier.php?action=remove&id_musique=<?php echo $item["id_musique"]; ?>" title="Supprimer">Retirer du caddie</a></td>
+									<td><a href="panier.php?action=remove&code_article=<?php echo $item["code_article"]; ?>">Retirer du caddie</a></td>
 								</tr>
 								<?php
 								$item_total += ($item["prix_vinyl"]*$item["quantity"]);
@@ -82,6 +86,8 @@ if(!empty($_GET["action"]))
 					<?php
 				};
 				?>
+				<button type="submit">Valider son panier </button>
+				</form>
 			</div>
 		</div>
 		<?php require_once("../includes/footer.php");?>

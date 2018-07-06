@@ -8,11 +8,11 @@ require_once("../includes/includes.php");
 	exit;
 }
 */
-$idget = $_GET['id'];
-$musics = $DB-> query('SELECT * FROM musique WHERE id_musique='.$idget);
-$musics = $musics->fetchAll();
+$musi = $DB-> query("SELECT * FROM musique WHERE code_article ='" . $_GET["code_article"] . "'");
+$musi = $musi->fetchAll();
 
-foreach ($musics as $msc){
+foreach ($musi as $msc){
+
 };
 
 if(!empty($_GET["action"])) 
@@ -21,14 +21,14 @@ if(!empty($_GET["action"]))
 	{
 		case "add":
 		if(!empty($_POST["quantity"])) {
-			$productByid = $DB->query("SELECT * FROM musique WHERE id_musique='" . $_GET["id"] . "'");
+			$productByid = $DB->query("SELECT * FROM musique WHERE code_article='" . $_GET["code_article"] . "'");
 			$productByid = $productByid->fetchAll();
-			$itemArray = array($productByid[0]["id_musique"]=>array('nom_album'=>$productByid[0]["nom_album"], 'id_musique'=>$productByid[0]["id_musique"], 'nom_artiste'=>$productByid[0]["nom_artiste"], 'quantity'=>$_POST["quantity"], 'prix_vinyl'=>$productByid[0]["prix_vinyl"]));
+			$itemArray = array($productByid[0]["code_article"]=>array('nom_album'=>$productByid[0]["nom_album"], 'code_article'=>$productByid[0]["code_article"], 'nom_artiste'=>$productByid[0]["nom_artiste"], 'quantity'=>$_POST["quantity"], 'prix_vinyl'=>$productByid[0]["prix_vinyl"]));
 
 			if(!empty($_SESSION["cart_item"])) {
-				if(in_array($productByid[0]["id_musique"],array_keys($_SESSION["cart_item"]))) {
-					foreach($_SESSION["cart_item"] as $k => $v) {
-						if($productByid[0]["id_musique"] == $k) {
+				if(in_array($productByid[0]["code_article"],$_SESSION["cart_item"])) {
+					foreach($_SESSION["cart_item"] as $k) {
+						if($productByid[0]["code_article"] == $k) {
 							if(empty($_SESSION["cart_item"][$k]["quantity"])) {
 								$_SESSION["cart_item"][$k]["quantity"] = 0;
 							}
@@ -80,7 +80,7 @@ if(!empty($_GET["action"]))
 				<p>Prix de la cassette: <br><?php echo $msc['prix_cassette']. "€" ?> <div class="ajoutpanier"><button type="button">Ajouter au panier</button></div></p>
 			</div>
 		--><div id="prixcas">
-			<form method="post" action="descriproducts.php?action=add&id=<?php echo $idget; ?>">
+			<form method="post" action="descriproducts.php?action=add&code_article=<?php echo $msc['code_article']; ?>">
 				<p>Prix du vinyl: <br><?php echo $msc['prix_vinyl']. "€" ?><div class="ajoutpanier"><input type="text" name="quantity" value="1" size="2" /><input type="submit" value="Ajouter au panier"/></div></p>
 			</form>
 		</div>

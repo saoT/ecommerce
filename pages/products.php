@@ -48,7 +48,7 @@ $music = $music->fetchAll();
                                 <?= $mc['nom_artiste'] ?>
                             </td>
                             <td>
-                                <a href="/commerce/E/pages/descriproducts.php?id=<?php echo $mc['id_musique'] ?>"><?= $mc['nom_album'] ?></a>
+                                <a href="/commerce/E/pages/descriproducts.php?code_article=<?php echo $mc['code_article'] ?>"><?= $mc['nom_album'] ?></a>
                             </td>
                             <td>
                                 <?= $mc['categorie_artiste'] ?>
