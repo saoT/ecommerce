@@ -447,3 +447,31 @@ hr {
 #vider{
   float: right;
 }
+
+
+
+/*----------------------------------/
+/---------  FORMER ORDER  ----------/
+/----------------------------------*/
+
+
+#tablecommandecontainer{
+  border: 2px solid blue;
+  width: 100%;
+  height: 550px;
+  position: relative;
+}
+
+#tablecommande{
+  width: 80%;
+  height: 450px;
+  border: 2px solid green;
+  margin-left: 50%;
+  margin-top: 10px;
+  transform: translateX(-50%); 
+  position: absolute;
+}
+
+#commandeinfo{
+  text-align: center;
+}

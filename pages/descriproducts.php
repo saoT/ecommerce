@@ -76,20 +76,19 @@ if(!empty($_GET["action"]))
 			</div>
 
 			<div id="prix">
-			<!-- 	<div id="prixvin">
+		<!-- 	<div id="prixvin">
 				<p>Prix de la cassette: <br><?php echo $msc['prix_cassette']. "€" ?> <div class="ajoutpanier"><button type="button">Ajouter au panier</button></div></p>
 			</div>
-		--><div id="prixcas">
-			<form method="post" action="descriproducts.php?action=add&code_article=<?php echo $msc['code_article']; ?>">
-				<p>Prix du vinyl: <br><?php echo $msc['prix_vinyl']. "€" ?><div class="ajoutpanier"><input type="text" name="quantity" value="1" size="2" /><input type="submit" value="Ajouter au panier"/></div></p>
-			</form>
+		<-->	<div id="prixcas">
+				<form method="post" action="descriproducts.php?action=add&code_article=<?php echo $msc['code_article']; ?>">
+					<p>Prix du vinyl: <br><?php echo $msc['prix_vinyl']. "€" ?><div class="ajoutpanier"><input type="text" name="quantity" value="1" size="2" /><input type="submit" value="Ajouter au panier"/></div></p>
+				</form>
+				</div>
+			</div>
 		</div>
-	</div>
-
-</div>
 <!-- <a href="./admin.php"><button type="button" name="Admin">Admin</button></a> -->
 <?php  require_once("../includes/footer.php");?>
-</div>
+	</div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -39,8 +39,21 @@ case "delete":
         $DB->query('DELETE FROM client WHERE id_client='.$_SESSION["id"]);
     	header('Location: /commerce/E/includes/deconnexion.php');
         break;
+
     }
 } 
+$commande = $DB->query("SELECT *FROM commande INNER JOIN musique ON commande.code_article = musique.code_article");
+$commande = $commande->fetchAll();
+
+foreach ($commande as $cd) {
+  
+};
+
+
+
+$random_number = intval( "0" . rand(1,9) . rand(0,9) . rand(0,9) . rand(0,9) . rand(0,9) ); // random(ish) 5 digit int
+
+$random_string = chr(rand(65,90)) . chr(rand(65,90)) . chr(rand(65,90)) . chr(rand(65,90)) . chr(rand(65,90)); // random(ish) 5 character string
 ?>
 
 <!DOCTYPE html>
@@ -122,8 +135,16 @@ case "delete":
 				</span>
 			</div>
 		</div>
-		<div class="colprof prof2">Panier en cours</div>
-		<div class="colprof prof3">Précédents achats <br><br><a href=""><?= $ac['id_commande'] ?></a> <?= $ac['prix_commande'] ?></div>
+		<div class="colprof prof2">Panier en cours <br><br></div>
+		<div class="colprof prof3">Précédents achats <br><br>
+      <?php if($achat >0)
+      {
+      foreach ($commande as $cd)
+        { echo '<a href="commandes.php?num_commande='.$ac['num_commande'].'">'.($cd["num_commande"]).'<br>';
+        }
+      }else{
+        echo "Vous n'avez pas passé de commande." ;}?>
+    </div>
 	</div>
 
 	<?php  require_once("../includes/footer.php");?>
