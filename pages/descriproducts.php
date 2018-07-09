@@ -8,6 +8,32 @@ require_once("../includes/includes.php");
 	exit;
 }
 */
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Description produits</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link rel="stylesheet" href="/commerce/E/index.css">
+</head>
+<body>
+	
+
+
+	<?php require_once ('../includes/bande_son.php'); ?>
+	
+	<div class="wrapper">
+
+		<?php require_once("../includes/navbar.php"); ?>
+
+		<div class="album">
+
+
+
+<?php
+
 $musi = $DB-> query("SELECT * FROM musique WHERE code_article ='" . $_GET["code_article"] . "'");
 $musi = $musi->fetchAll();
 
@@ -20,23 +46,29 @@ if(!empty($_GET["action"]))
 	switch($_GET["action"]) 
 	{
 		case "add":
+
+
 		if(!empty($_POST["quantity"])) {
 			$productByid = $DB->query("SELECT * FROM musique WHERE code_article='" . $_GET["code_article"] . "'");
 			$productByid = $productByid->fetchAll();
 			$itemArray = array($productByid[0]["code_article"]=>array('nom_album'=>$productByid[0]["nom_album"], 'code_article'=>$productByid[0]["code_article"], 'nom_artiste'=>$productByid[0]["nom_artiste"], 'quantity'=>$_POST["quantity"], 'prix_vinyl'=>$productByid[0]["prix_vinyl"]));
 
 			if(!empty($_SESSION["cart_item"])) {
-				if(in_array($productByid[0]["code_article"],$_SESSION["cart_item"])) {
-					foreach($_SESSION["cart_item"] as $k) {
-						if($productByid[0]["code_article"] == $k) {
-							if(empty($_SESSION["cart_item"][$k]["quantity"])) {
-								$_SESSION["cart_item"][$k]["quantity"] = 0;
-							}
-							$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+				foreach( $_SESSION["cart_item"] as $index => $article ) {
+
+					if($productByid[0]["code_article"] == $article["code_article"]) {
+						echo $_POST["quantity"];
+						echo $article["quantity"];
+						if( empty( $article["quantity"] ) ) {
+							$article["quantity"] = 0;
 						}
+						$sum = $article["quantity"] + $_POST["quantity"];
+						echo $sum;
+						$_SESSION["cart_item"][$index]["quantity"] = $sum;
+
+					} else {
+						$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
 					}
-				} else {
-					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
 				}
 			} else {
 				$_SESSION["cart_item"] = $itemArray;
@@ -45,24 +77,11 @@ if(!empty($_GET["action"]))
 		break;
 	}
 }
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Description produits</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<link rel="stylesheet" href="/commerce/E/index.css">
-</head>
-<body>
-	
-	<?php require_once ('../includes/bande_son.php'); ?>
-	
-	<div class="wrapper">
 
-		<?php require_once("../includes/navbar.php"); ?>
 
-		<div class="album">
+
 			<div class="titrealbum">
 				<h4>Album : <?php echo $msc['nom_album']?></h4>
 				<h5>Interprète : <?php echo $msc['nom_artiste']?></h5>
