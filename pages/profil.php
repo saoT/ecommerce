@@ -42,7 +42,7 @@ case "delete":
 
     }
 } 
-$commande = $DB->query("SELECT *FROM commande INNER JOIN musique ON commande.code_article = musique.code_article");
+$commande = $DB->query("SELECT * FROM commande INNER JOIN musique ON commande.code_article = musique.code_article");
 $commande = $commande->fetchAll();
 
 foreach ($commande as $cd) {
@@ -140,7 +140,7 @@ $random_string = chr(rand(65,90)) . chr(rand(65,90)) . chr(rand(65,90)) . chr(ra
       <?php if($achat >0)
       {
       foreach ($commande as $cd)
-        { echo '<a href="commandes.php?num_commande='.$ac['num_commande'].'">'.($cd["num_commande"]).'<br>';
+        { echo '<a href="commandes.php?num_commande='.$cd['num_commande'].'">'.($cd["num_commande"]).'<br>';
         }
       }else{
         echo "Vous n'avez pas passé de commande." ;}?>

@@ -11,7 +11,7 @@ $ancienachat = $DB->query("SELECT * FROM commande WHERE num_commande='" .$_GET["
 $ancienachat = $ancienachat->fetchAll();
 foreach ($ancienachat as $aa) {};
 
-$commande = $DB->query("SELECT *FROM commande INNER JOIN musique ON commande.code_article = musique.code_article");
+$commande = $DB->query("SELECT * FROM commande INNER JOIN musique ON commande.code_article = musique.code_article WHERE num_commande='" .$_GET["num_commande"]."'");
 $commande = $commande->fetchAll();
 
 foreach ($commande as $cd) {
@@ -37,7 +37,7 @@ foreach ($commande as $cd) {
 				</div>
 				<div>
 					<?php foreach ($commande as $cd) {
-		echo $cd['nom_album']." :  ".$cd['nom_artiste'].' Prix :'.$cd['prix_vinyl'].'€'.'<br>';
+		echo $cd['nom_album']." :  ".$cd['nom_artiste'].' Prix :'.$cd['prix_vinyl'].'€'.'<br> <br>';
 	}  ?>
 				</div>
 			</div>

@@ -13,6 +13,7 @@ if(!empty($_POST))
 {
   extract($_POST);
   $valid = true;
+  $codar = htmlspecialchars(trim($codar));
   $artiste = htmlspecialchars(trim($artiste));
   $catego = htmlspecialchars(trim($catego));
   $prix_vi = htmlspecialchars(trim($prix_vi));
@@ -27,7 +28,7 @@ if(!empty($_POST))
 
   if($valid)
 	{ 
-$DB->insert('INSERT INTO musique (id_artiste, nom_artiste, categorie_artiste, prix_vinyl, prix_cassette, nom_album, description_musique, pochette) values (:id_artiste ,:nom_artiste, :categorie_artiste, :prix_vinyl, :prix_cassette, :nom_album, :description_musique, :pochette)', array('id_artiste' =>$id ,'nom_artiste' => $artiste, 'categorie_artiste' => $catego, 'prix_vinyl' => $prix_vi, 'prix_cassette' => $prix_cass, 'nom_album' => $album, 'description_musique' => $descri, 'pochette' => $pochette));
+$DB->insert('INSERT INTO musique (code_article, id_artiste, nom_artiste, categorie_artiste, prix_vinyl, prix_cassette, nom_album, description_musique, pochette) values (:code_article, :id_artiste ,:nom_artiste, :categorie_artiste, :prix_vinyl, :prix_cassette, :nom_album, :description_musique, :pochette)', array('code_article'=>$codar ,'id_artiste' =>$id ,'nom_artiste' => $artiste, 'categorie_artiste' => $catego, 'prix_vinyl' => $prix_vi, 'prix_cassette' => $prix_cass, 'nom_album' => $album, 'description_musique' => $descri, 'pochette' => $pochette));
     } 
 } 
 ?>
@@ -48,6 +49,10 @@ $DB->insert('INSERT INTO musique (id_artiste, nom_artiste, categorie_artiste, pr
         <h1 class="index-h1">Ajouter un article</h1>
           <div class="s125">
             <div id="infoper" class="blok">
+              <br>
+              <label>* Code Article :</label>
+              <br>
+              <input class="input" type="text" name="codar" placeholder="code de l'article" value="<?php if (isset($codar)) echo $codar; ?>" minlenght="3" required>  
               <br>
               <label>* Catego :</label>
               <br>
